@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<title>Guanchip</title>
+
+		<!-- Cargamos JavaScript de IDECanarias para acceso a mapas en WMS -->
+		<script type="text/javascript" src="js/mijs.js"></script>
+
+		<script type="text/javascript">
+
+			var map;
+
+//marcador
+           var html1="<object type='text/html'' data='ric.html' height='300'></object>";
+
+            var html2="<div style='line-height:60%'><h3>Kanaw</h3><hr/><p><img src='img/kana.jpg'/></p><p>A mí no me mires que yo no tengo nada que ver</p><hr/></div>";
+            var html3="<object type='text/html'' data='caru.html' height='300'></object>";
+
+
+            var infoMARKER = new Array();
+				infoMARKER[0] = new Array(215103,3173728,html1);
+				infoMARKER[1] = new Array(214978,3173518,html2);
+				infoMARKER[2]= new Array(457552,3112523,html3);
+
+            var icono = "img/gota2.png";
+
+
+
+
+
+
+//función inicializar
+			function initialize(x,y,z) {
+
+
+                map = IDECanarias_InicializarMapa("wms_OU",x,y,z);
+//Marcador
+		        IDECanarias_CrearMarkers(infoMARKER,icono);
+
+
+
+
+
+//Búsqueda
+//				IDECanarias_Busqueda(map, "4");
+
+//Get Info
+//				IDECanarias_Info(true);
+//Logo
+                IDECanarias_CrearLogoUsuario("img/guanchip.png");
+
+
+//Leyenda
+//				var leyenda = document.createElement('DIV');
+//				leyenda.innerHTML = '<img src="http://visortf.grafcan.es/gmaps/moodle/Leyenda.png"/>';
+//				myControl = new ol.control.Control({
+//					element: leyenda,
+//					target: "contenedor_usuario"
+//				});
+//				map.addControl(myControl);
+
+
+
+
+
+
+//Boton
+	//			var leyenda = document.createElement('DIV');
+	//			leyenda.innerHTML = '<img title="Mostrar/Ocultar KML" onclick="cargar_descargar_kml();" src="http://visortf.grafcan.es/gmaps/images/boton.png"/>';
+	//			myControl = new ol.control.Control({
+	//				element: leyenda,
+	//				target: "contenedor_usuario"
+	//			});
+	//			map.addControl(myControl);   -->
+
+
+//Capa externa
+	//			IDECanarias_AgregarWMS("MOS","http://idecan2.grafcan.es/ServicioWMS/MOS?","MOS","image/png",0.6);
+//Añadir otras capas base
+	//	map.addLayer(loadWMSParam("MOS","http://idecan3.grafcan.es/ServicioWMS/MOS?","WMS_MOS","image/png",0.4));
+	//	map.addLayer(loadWMSParam("FR","http://idecan.grafcan.com/ServicioWMS/FincasReg?","FR","image/png",0.8));
+
+//Botones para las capas
+	//	var bCombo = false;
+		      //  IDECanarias_crearBotones("MOS, FR", true);
+                IDECanarias_AgregarWMS("MOS","http://idecan2.grafcan.es/ServicioWMS/MOS?","MOS","image/png",0.6);
+              // IDECanarias_AgregarWMS("Solar","http://idecan1.grafcan.es/ServicioWMS/MapaSolar?","temperatura","image/png",0.8);
+
+			}
+
+//KLM
+var kml_cargado=false;
+function kml (quekml) {
+    if (kml_cargado) {
+
+        IDECanarias_EliminarKML();
+        kml_cargado = !kml_cargado;
+}else
+            {
+                IDECanarias_KML(map, quekml);
+                kml_cargado = !kml_cargado;
+
+            }
+
+
+
+}
+
+
+
+
+function vamos(lnglat) {
+moverCentro(lnglat,18);
+}
+
+
+
+
+
+
+		</script>
+	</head>
+	<body onload="initialize(339741,3126637,9)">
+		<div id="map_canvas" style="position:absolute;width: 1000px; height: 500px"></div>
+
+
+
+ <ul> <li><button id="guan" style="position:absolute" onclick="vamos(infoMARKER[0])">Guanchip</button></li>
+    <li> <button id="kana" style="position:relative" onclick="vamos(infoMARKER[1])">Kanaw</button></li>
+     <li> <button id="caru" style="position:relative" onclick="vamos(infoMARKER[2])">Carusso</button></li>
+ <li> <button id="enrique" style="position:relative" onclick="kml ('kml/enrique.kml')">Enrique</button></li>
+
+ </ul>
+	</body>
+</html>
+
+
+

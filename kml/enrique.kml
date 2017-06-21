@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://earth.google.com/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/kml/2.2 https://developers.google.com/kml/schema/kml22gx.xsd">
+<Document>
+<name><![CDATA[enrique]]></name>
+<Placemark>
+<Style>
+<LineStyle><color>fcff0000</color><width>2</width></LineStyle></Style>
+<LineString><coordinates>-17.927846939193635,28.661348959351667 -17.91399366872912,28.659366686690397</coordinates></LineString>
+</Placemark>
+</Document>
+</kml>
